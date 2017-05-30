@@ -1,0 +1,134 @@
+variant_1_1_1:
+  id: 1
+  val: "First Variant (Question-1) (Poll-1)"
+  redpoll_question_id: 1  
+
+variant_2_1_1:
+  id: 2
+  val: "Second Variant (Question-1) (Poll-1)"
+  redpoll_question_id: 1  
+
+variant_3_1_1:
+  id: 3
+  val: "Third Variant (Question-1) (Poll-1)"
+  redpoll_question_id: 1  
+
+variant_1_2_1:
+  id: 4
+  val: "First Variant (Question-2) (Poll-1)"
+  redpoll_question_id: 2  
+
+variant_2_2_1:
+  id: 5
+  val: "Second Variant (Question-2) (Poll-1)"
+  redpoll_question_id: 2  
+
+variant_3_2_1:
+  id: 6
+  val: "Third Variant (Question-2) (Poll-1)"
+  redpoll_question_id: 2  
+
+variant_1_3_1:
+  id: 7
+  val: "First Variant (Question-3) (Poll-1)"
+  redpoll_question_id: 3  
+
+variant_2_3_1:
+  id: 8
+  val: "Second Variant (Question-3) (Poll-1)"
+  redpoll_question_id: 3 
+
+variant_3_3_1:
+  id: 9
+  val: "Third Variant (Question-3) (Poll-1)"
+  redpoll_question_id: 3  
+
+variant_1_1_2:
+  id: 10
+  val: "First Variant (Question-1) (Poll-2)"
+  redpoll_question_id: 4  
+
+variant_2_1_2:
+  id: 11
+  val: "Second Variant (Question-1) (Poll-2)"
+  redpoll_question_id: 4  
+
+variant_3_1_2:
+  id: 12
+  val: "Third Variant (Question-1) (Poll-2)"
+  redpoll_question_id: 4  
+
+variant_1_2_2:
+  id: 13
+  val: "First Variant (Question-2) (Poll-2)"
+  redpoll_question_id: 5  
+
+variant_2_2_2:
+  id: 14
+  val: "Second Variant (Question-2) (Poll-2)"
+  redpoll_question_id: 5  
+
+variant_3_2_2:
+  id: 15
+  val: "Third Variant (Question-2) (Poll-2)"
+  redpoll_question_id: 5  
+
+variant_1_3_2:
+  id: 16
+  val: "First Variant (Question-3) (Poll-2)"
+  redpoll_question_id: 6  
+
+variant_2_3_2:
+  id: 17
+  val: "Second Variant (Question-3) (Poll-2)"
+  redpoll_question_id: 6 
+
+variant_3_3_2:
+  id: 18
+  val: "Third Variant (Question-3) (Poll-2)"
+  redpoll_question_id: 6  
+
+variant_1_1_3:
+  id: 19
+  val: "First Variant (Question-1) (Poll-3)"
+  redpoll_question_id: 7  
+
+variant_2_1_3:
+  id: 20
+  val: "Second Variant (Question-1) (Poll-3)"
+  redpoll_question_id: 7  
+
+variant_3_1_3:
+  id: 21
+  val: "Third Variant (Question-1) (Poll-3)"
+  redpoll_question_id: 7  
+
+variant_1_2_3:
+  id: 22
+  val: "First Variant (Question-2) (Poll-3)"
+  redpoll_question_id: 8  
+
+variant_2_2_3:
+  id: 23
+  val: "Second Variant (Question-2) (Poll-3)"
+  redpoll_question_id: 8  
+
+variant_3_2_3:
+  id: 24
+  val: "Third Variant (Question-2) (Poll-3)"
+  redpoll_question_id: 8  
+
+variant_1_3_3:
+  id: 25
+  val: "First Variant (Question-3) (Poll-3)"
+  redpoll_question_id: 9  
+
+variant_2_3_3:
+  id: 26
+  val: "Second Variant (Question-3) (Poll-3)"
+  redpoll_question_id: 9 
+
+variant_3_3_3:
+  id: 27
+  val: "Third Variant (Question-3) (Poll-3)"
+  redpoll_question_id: 9  

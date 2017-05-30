@@ -1,0 +1,2 @@
+module RedpollVariantsHelper
+end

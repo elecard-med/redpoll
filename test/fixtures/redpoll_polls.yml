@@ -1,0 +1,17 @@
+poll_1:
+  id: 1
+  title: "First Test Poll"
+  description: "First Test Poll Description"  
+  active: true  
+
+poll_2:
+  id: 2
+  title: "Second Test Poll"
+  description: "Second Test Poll Description"  
+  active: false  
+
+poll_3:
+  id: 3
+  title: "Third Test Poll"
+  description: "Third Test Poll Description"  
+  active: true  

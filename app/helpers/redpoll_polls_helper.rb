@@ -1,0 +1,2 @@
+module RedpollPollsHelper
+end

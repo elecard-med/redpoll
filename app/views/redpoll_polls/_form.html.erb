@@ -1,0 +1,37 @@
+<% if @redpoll_poll.errors.any? %>
+    <div id="error_explanation">
+    <h2><%= pluralize(@redpoll_poll.errors.count, t('error')) %> </h2>
+ 
+        <ul>
+        <% @redpoll_poll.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+ <% end %>
+
+<%= form_for @redpoll_poll do |f| %>
+ <div>
+    <div><%= f.label :title %></div>
+    <div><%= f.text_field :title, :maxlength => "64" %></div>
+</div>
+<br>
+<div>
+  <div><%= f.label :description %></div>
+  <div><%= f.text_field :description, :maxlength => "64" %></div>
+</div>
+<br>
+ <div>
+    <%= f.label :active %>
+    <%= f.check_box :active %>
+</div>
+<br>
+<div style="margin-top:20px;">
+  <div style="display:inline;">
+    <%= f.submit %>
+  </div>
+  <div style="display:inline;margin-left:5px;">
+    <%= link_to t('cancel'), redpoll_polls_path %>
+  </div>
+</div
+<% end %>  

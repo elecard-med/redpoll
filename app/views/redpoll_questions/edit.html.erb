@@ -1,0 +1,14 @@
+<div class="breadcrumb">
+  <%= render_breadcrumbs %>
+</div>
+<h1> <%=@redpoll_question.redpoll_poll.title %></h1>
+<div>
+<div style="display:inline;font-weight:bold;font-size:18px;padding:10px 70px 50px 0">
+  <%=t('edit_redpoll_question') %>
+</div>
+</div>
+<br>
+<%=render 'form' %>
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'redpoll', :plugin => 'redpoll' %>
+<% end %>

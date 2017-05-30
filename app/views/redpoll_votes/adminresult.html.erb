@@ -1,0 +1,40 @@
+<div class="breadcrumb">
+   <%= render_breadcrumbs %>
+</div>
+<% if @redpoll_poll %>
+  <div id="redpoll-result">
+  <% res_questions = @poll_result[:questions] %>
+  <h2> <%=@redpoll_poll.title %> </h2>
+  <div style="text-align:right;">
+    <div style="display:inline;"><%=t('total_votes_number')%> (<%= @poll_result[:total_votes] %>)</div>
+  <% if @can_revote %>
+    <div style="display:inline;"><%= link_to t('revote'), redpoll_votes_reset_path(redpoll_poll_id: @redpoll_poll.id) %></div>
+  <% end %>
+</div>  
+      <div>
+        <% @redpoll_poll.redpoll_questions.each do |question| %>
+          <p style="font-weight:bold;"> <%= question.val %> </p>
+          <div style="padding: 0px 30px;">
+            <% question.redpoll_variants.each do |variant| %>
+              <% res_variant = res_questions[question.id] %>
+              <% res_vs = res_variant[:variants_summary] %>
+              <div> <%=variant.val %> - <%=t('votes_number')%> <%=res_vs[variant.id][:counter] %> (<%=res_vs[variant.id][:percentage] %>)% </div>
+              <div style="height:7px; padding:1px; border:1px solid #cccccc;"> 
+                <div style="width: <%=res_vs[variant.id][:percentage] %>%; height:7px;background:#007700;"> 
+                </div>    
+              </div>    
+              <%=render :partial => "verbosevariant", locals: {v: variant} %>
+            <% end %>
+          </div>
+        <% end %>
+        <div>
+        </div>        
+<% else %>
+  <p><%=t('poll_not_found')%></p>
+<% end %>
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'redpoll', :plugin => 'redpoll' %>
+<% end %>
+<% content_for :header_tags do %>
+  <%= javascript_include_tag 'verbosevariant', :plugin => 'redpoll' %>
+<% end %>

@@ -1,0 +1,44 @@
+question_1_1:
+  id: 1
+  val: "First Question (Poll-1)"
+  redpoll_poll_id: 1  
+
+question_2_1:
+  id: 2
+  val: "Second Question (Poll-1)"
+  redpoll_poll_id: 1  
+
+question_3_1:
+  id: 3
+  val: "Third Question (Poll-1)"
+  redpoll_poll_id: 1  
+
+question_1_2:
+  id: 4
+  val: "First Question (Poll-2)"
+  redpoll_poll_id: 2  
+
+question_2_2:
+  id: 5
+  val: "Second Question (Poll-2)"
+  redpoll_poll_id: 2  
+
+question_3_2:
+  id: 6
+  val: "Third Question (Poll-2)"
+  redpoll_poll_id: 2  
+
+question_1_3:
+  id: 7
+  val: "First Question (Poll-3)"
+  redpoll_poll_id: 3  
+
+question_2_3:
+  id: 8
+  val: "Second Question (Poll-3)"
+  redpoll_poll_id: 3  
+
+question_3_3:
+  id: 9
+  val: "Third Question (Poll-3)"
+  redpoll_poll_id: 3  

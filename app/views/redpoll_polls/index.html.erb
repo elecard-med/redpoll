@@ -1,0 +1,47 @@
+<h2><%=t('redpoll_poll_list') %></h2>
+<div id="poll-list">
+  <div>
+  <div style="display:inline;">
+    <input class="search" placeholder="<%=t('search_by_name')%>" />
+  </div>
+  <div style="display:inline;">
+    <%= link_to t('create_redpoll_poll'), new_redpoll_poll_path, class: "icon icon-add" %>
+  </div>
+  </div>
+<table class="poll-table">
+  <tr style="background-color:#FBF0DB;">
+    <th><%= link_to("ID", "javascript:void(0)", class: "sort", data:{sort: :id})%></th>
+    <th><%= link_to(t('name'), "javascript:void(0)", class: "sort", data:{sort: :title}) %></th>
+    <th><%= link_to(t('status'), "javascript:void(0)", class: "sort", data:{sort: :active}) %></th>
+    <th><%=t('wiki_macro') %></th>
+    <th colspan="4"><%=t('control') %></th>
+  </tr>
+  <tbody class="list">
+    <% @redpoll_polls.each do |redpoll_poll| %>
+      <tr style="background-color:<%= redpoll_poll.active ? "#ccffb3" : "#ffe6e6" %>;">
+        <td class="id" style="font-weight:bold;"><%=redpoll_poll.id %></td>
+        <td class="title"><%= redpoll_poll.title %></td>
+        <td class="active"><%= redpoll_poll.active ? t('active') : t('not_active') %></td>
+        <td>{{redpoll(70%, 300px, <%=redpoll_poll.id %>)}}</td>
+        <td><%= link_to t('edit'), edit_redpoll_poll_path(redpoll_poll) %></td>
+        <td><%= link_to t('delete'), redpoll_poll_path(redpoll_poll), method: :delete, data: {confirm: t('confirm_delete_poll')} %></td>
+        <td><%= link_to t('questions'), redpoll_questions_path(redpoll_poll_id: redpoll_poll.id) %></td>
+        <td><%= link_to t('results'), redpoll_votes_adminresult_path(redpoll_poll_id: redpoll_poll.id) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'redpoll', :plugin => 'redpoll' %>
+<% end %>
+<% content_for :header_tags do %>
+  <%= javascript_include_tag 'list.min', :plugin => 'redpoll' %>
+<% end %>
+<script>
+var options = {
+    valueNames: [ 'id', 'title', 'active' ]
+};
+
+var userList = new List('poll-list', options);
+</script>

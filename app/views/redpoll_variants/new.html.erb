@@ -1,0 +1,13 @@
+<div class="breadcrumb">
+  <%= render_breadcrumbs %>
+</div>
+<div>
+<div style="display:inline;font-weight:bold;font-size:18px;padding:10px 70px 50px 0">
+  <%=t('create_redpoll_variant') %>
+</div>
+</div>
+<br>
+<%=render 'form' %>
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'redpoll', :plugin => 'redpoll' %>
+<% end %>

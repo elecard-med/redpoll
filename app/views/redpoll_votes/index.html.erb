@@ -1,0 +1,47 @@
+<style  type="text/css">
+#content {
+  font-family: Verdana, sans-serif;
+  font-size: 12px;
+  color: #333;
+}
+a, a:link, a:visited {
+  color: #169;
+  text-decoration: none;
+}
+.flash {
+  font-weight:bold;
+}
+.flash.error {
+  color:#990000;
+}
+</style>
+<div id="content">
+<% if @redpoll_poll %>
+  <h2> <%=@redpoll_poll.title %> </h2>
+  <%= form_for @vote do |f| %>
+    <%= f.hidden_field :user_id, value: @vote.user.id %>
+
+      <% @redpoll_poll.redpoll_questions.each do |question| %>
+        <p style="font-weight:bold;"> <%= question.val %> </p>
+        <div>
+        <%= collection_radio_buttons("redpoll_vote[poll_result]",
+                                     "#{question.id}", 
+                                     question.redpoll_variants,
+                                     :id, 
+                                     :val) do |b|
+                                       ("<div style='padding: 0 10px;'>" + b.label { b.radio_button + b.text } + "</div>").html_safe
+                                      end
+                                  
+                                   %>
+                                   </div>                           
+      <% end %>
+
+      <p><%= f.submit t('do_vote') %></p>
+      <%=render_flash_messages %>
+  <% end %>
+
+<% else %>
+  <p><%=t('poll_not_found')%></p>
+<% end %>
+</div>
+

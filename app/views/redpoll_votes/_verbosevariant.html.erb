@@ -1,0 +1,8 @@
+<%= link_to(t('more_info'), "javascript:void(-1)", class: "more-info") %>
+<div class="verbose-variant">
+  <% v.redpoll_votes.each do |vote| %>
+    <p><%=RedpollVotesHelper.format_user vote.user %></p>
+  <% end %>
+  <%= link_to(t('close'), "javascript:void(-1)", class: "close-verbose") %>
+</div>
+

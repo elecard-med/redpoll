@@ -1,0 +1,27 @@
+<div class="breadcrumb">
+  <%= render_breadcrumbs %>
+</div>
+<div style="padding-bottom:10px;"><%= link_to t('create_redpoll_variant'), new_redpoll_variant_path(@redpoll_question), class: "icon icon-add" %></div>
+<table class="poll-table">
+  <tr style="background-color:#FBF0DB;">
+    <th><%=t('position') %></th>
+    <th><%=t('name') %></th>
+    <th colspan="4"><%=t('control') %></th>
+  </tr>
+
+  <% @redpoll_variants.each do |redpoll_variant| %>
+    <tr>
+    <td><%= redpoll_variant.position %></td>
+    <td><%= redpoll_variant.val %></td>
+    <td><%= link_to t('edit'), edit_redpoll_variant_path(redpoll_variant) %></td>
+    <td><%= link_to t('delete'), redpoll_variants_path(redpoll_variant), method: :delete, data: {confirm: t('confirm_delete_variant')} %></td>
+    <td><%= link_to t('down_position'), down_position_redpoll_variant_path(redpoll_variant) %></td>
+    <td><%= link_to t('up_position'), up_position_redpoll_variant_path(redpoll_variant) %></td>
+  </tr>
+<% end %>
+</table>
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'redpoll', :plugin => 'redpoll' %>
+<% end %>
+
+
