@@ -4,7 +4,9 @@ class RedpollQuestionsController < ApplicationController
   before_action :set_redpoll_question, only: [
     :edit, 
     :update, 
-    :destroy 
+    :destroy, 
+    :cascade_delete_confirm,
+    :cascade_delete  
   ]
   before_action :set_moving_question, only: [
     :up_position,
@@ -50,6 +52,11 @@ class RedpollQuestionsController < ApplicationController
   def destroy
     bf_destroy @redpoll_question
   end
+  def cascade_delete_confirm
+  end
+  def cascade_delete
+    bf_cascade_delete @redpoll_question
+  end
   #=========================================
   def bf_create entity
     respond_to do |format|
@@ -61,7 +68,7 @@ class RedpollQuestionsController < ApplicationController
       else
         @redpoll_question = entity
         add_breadcrumb t('polls'), redpoll_polls_path
-        add_breadcrumb @redpoll_poll.title, 'javascript:void(0)'
+        add_breadcrumb @redpoll_poll.title, edit_redpoll_poll_path(@redpoll_poll)
         add_breadcrumb t('questions'), redpoll_questions_path
         add_breadcrumb t('create_redpoll_question'), new_redpoll_question_path
         format.html { render :new }
@@ -78,7 +85,7 @@ class RedpollQuestionsController < ApplicationController
       else
         @redpoll_question = entity
         add_breadcrumb t('polls'), redpoll_polls_path
-        add_breadcrumb @redpoll_question.redpoll_poll.title, 'javascript:void(0)'
+        add_breadcrumb @redpoll_poll.title, edit_redpoll_poll_path(@redpoll_poll)
         add_breadcrumb t('questions'), redpoll_questions_path(@redpoll_question.redpoll_poll)
         add_breadcrumb t('edit_redpoll_question'), edit_redpoll_question_path
         format.html { render :edit}
@@ -96,9 +103,16 @@ class RedpollQuestionsController < ApplicationController
       end
     else
       respond_to do |format|
-        flash[:error] = t('fail_delete')
-        format.html { redirect_to redpoll_questions_path(entity.redpoll_poll)}
+        format.html { redirect_to action: "cascade_delete_confirm" }
       end  
+    end
+  end
+  def bf_cascade_delete entity
+    entity.destroy
+    respond_to do |format|
+      flash[:notice] = t('success_delete')
+      format.html { redirect_to redpoll_questions_path(entity.redpoll_poll)}
+      format.json { head :no_content }
     end
   end
   #=========================================

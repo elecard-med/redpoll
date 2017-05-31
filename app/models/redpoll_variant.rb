@@ -3,7 +3,7 @@ class RedpollVariant < ActiveRecord::Base
   before_create :calc_position
   belongs_to :redpoll_question
   validates :val, presence: true
-  has_many :redpoll_votes
+  has_many :redpoll_votes, dependent: :destroy
   attr_accessible :val, :position, :redpoll_question_id
   default_scope { order(position: :asc) }
   def can_destroy?

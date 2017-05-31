@@ -11,7 +11,7 @@ breadcrumbs_on_rails (3.0.1)
 
 ## Installation a plugin:
  1. cd {REDMINE_ROOT}/plugins
- 2. git clone github.com/em70/redpoll.git
+ 2. git clone https://github.com/elecard-med/redpoll.git
  3. bundle install
  5. bundle exec rake redmine:plugins:migrate RAILS_ENV=production
  6. Restart Redmine

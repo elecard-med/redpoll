@@ -1,7 +1,11 @@
 class RedpollPollsController < ApplicationController
   unloadable
   include RedpollCommon
-  before_action :set_redpoll_poll, only: [:edit, :update, :destroy]
+  before_action :set_redpoll_poll, only: [:edit, 
+                                          :update, 
+                                          :destroy, 
+                                          :cascade_delete_confirm,
+                                          :cascade_delete]
   before_filter :deny_access, :unless => :redpoll_group?
   def index
     @redpoll_polls = RedpollPoll.all
@@ -27,6 +31,12 @@ class RedpollPollsController < ApplicationController
   def destroy
     bf_destroy @redpoll_poll
   end
+  def cascade_delete_confirm
+  end
+  def cascade_delete
+    bf_cascade_delete @redpoll_poll
+  end
+
   #=========================================
   def bf_create entity
     respond_to do |format|
@@ -68,9 +78,16 @@ class RedpollPollsController < ApplicationController
       end
     else
       respond_to do |format|
-        flash[:error] = t('fail_delete')
-        format.html { redirect_to action: "index" }
+        format.html { redirect_to action: "cascade_delete_confirm" }
       end  
+    end
+  end
+  def bf_cascade_delete entity
+    entity.destroy
+    respond_to do |format|
+      flash[:notice] = t('success_delete')
+      format.html { redirect_to action: "index" }
+      format.json { head :no_content }
     end
   end
   #=========================================

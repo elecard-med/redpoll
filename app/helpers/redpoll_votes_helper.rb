@@ -37,11 +37,30 @@ module RedpollVotesHelper
     final_result = Hash.new
     final_result[:questions] = questions_result
     final_result[:total_votes] = total_counter
-    final_result
+    adjust_percentage(final_result)
+  end
+  def self.adjust_percentage(data)
+    data[:questions].each do |question|
+      summary = question[1][:variants_summary]
+      adjustment = 0.0
+      summary.values.each do |variant|
+        adjustment += variant[:percentage]
+      end
+      summary[summary.keys.last][:percentage] += (100.0 - adjustment)
+    end
+    data
   end
   def self.format_user(user)
     begin
-      Setting.plugin_redpoll['redpoll_user_format'] % user.attributes.symbolize_keys
+      u = user.attributes.symbolize_keys
+      black_list = [
+          :hashed_password,
+          :created_on
+      ]
+      black_list.each do |item| 
+        u.delete(item)
+      end
+      Setting.plugin_redpoll['redpoll_user_format'] % u 
     rescue
       I18n.t('invalid_user_format')
     end

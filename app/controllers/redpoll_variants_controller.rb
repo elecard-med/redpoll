@@ -1,7 +1,13 @@
 class RedpollVariantsController < ApplicationController
   unloadable
   include RedpollCommon
-  before_action :set_redpoll_variant, only: [:edit, :update, :destroy]
+  before_action :set_redpoll_variant, only: [
+    :edit, 
+    :update, 
+    :destroy,
+    :cascade_delete_confirm,
+    :cascade_delete
+  ]
   before_action :set_current_question, only: [:index, :new]
   before_filter :deny_access, :unless => :redpoll_group?
   before_action :set_moving_question, only: [
@@ -39,6 +45,11 @@ class RedpollVariantsController < ApplicationController
   def destroy
     bf_destroy @redpoll_variant
   end
+  def cascade_delete_confirm
+  end
+  def cascade_delete
+    bf_cascade_delete @redpoll_variant
+  end
   def up_position
     @redpoll_variant.move_up
     respond_to do |format|
@@ -61,9 +72,9 @@ class RedpollVariantsController < ApplicationController
       else
         @redpoll_variant = entity
         add_breadcrumb t('polls'), redpoll_polls_path
-        add_breadcrumb @redpoll_question.redpoll_poll.title, 'javascript:void(0)'
+        add_breadcrumb @redpoll_question.redpoll_poll.title, edit_redpoll_poll_path(@redpoll_question.redpoll_poll) 
         add_breadcrumb t('questions'), redpoll_questions_path(@redpoll_question.redpoll_poll)
-        add_breadcrumb @redpoll_question.val, 'javascript:void(0)'
+        add_breadcrumb @redpoll_question.val, edit_redpoll_question_path(@redpoll_question) 
         add_breadcrumb t('create_redpoll_variant'), new_redpoll_variant_path
         format.html { render :new }
         format.json { render json: entity.errors, status: :unprocessable_entity }
@@ -79,9 +90,9 @@ class RedpollVariantsController < ApplicationController
       else
         @redpoll_variant = entity
         add_breadcrumb t('polls'), redpoll_polls_path
-        add_breadcrumb redpoll_question.redpoll_poll.title, 'javascript:void(0)'
-        add_breadcrumb t('questions'), redpoll_questions_path(redpoll_question.redpoll_poll)
-        add_breadcrumb redpoll_question.val, 'javascript:void(0)'
+        add_breadcrumb @redpoll_question.redpoll_poll.title, edit_redpoll_poll_path(@redpoll_question.redpoll_poll) 
+        add_breadcrumb t('questions'), redpoll_questions_path(@redpoll_question.redpoll_poll)
+        add_breadcrumb @redpoll_question.val, edit_redpoll_question_path(@redpoll_question) 
         add_breadcrumb t('edit_redpoll_variant'), edit_redpoll_variant_path
         format.html { render :edit}
         format.json { render json: entity.errors, status: :unprocessable_entity }
@@ -98,9 +109,15 @@ class RedpollVariantsController < ApplicationController
       end
     else
       respond_to do |format|
-        flash[:error] = t('fail_delete')
-        format.html { redirect_to redpoll_variants_path(entity.redpoll_question)}
+        format.html { redirect_to action: "cascade_delete_confirm" }
       end  
+    end
+  end
+  def bf_cascade_delete entity
+    entity.destroy
+    respond_to do |format|
+      format.html { redirect_to redpoll_variants_path(entity.redpoll_question)}
+      format.json { head :no_content }
     end
   end
   #=========================================

@@ -1,0 +1,9 @@
+<p><%=t('cascade_delete_warning') %></p>
+<div style="margin-top:20px;">
+  <div style="display:inline;">
+    <%= link_to t('delete'), cascade_delete_redpoll_question_path(@redpoll_question), method: :delete %>
+  </div>
+  <div style="display:inline;margin-left:5px;">
+    <%= link_to t('cancel'), redpoll_questions_path(@redpoll_question.redpoll_poll) %>
+  </div>
+</div

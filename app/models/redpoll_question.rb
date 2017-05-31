@@ -3,7 +3,7 @@ class RedpollQuestion < ActiveRecord::Base
   before_create :calc_position
   validates :val, presence: true
   belongs_to :redpoll_poll
-  has_many :redpoll_variants
+  has_many :redpoll_variants, dependent: :destroy
   attr_accessible :val, :position, :redpoll_poll_id
   default_scope { order(position: :asc) }
   def calc_position

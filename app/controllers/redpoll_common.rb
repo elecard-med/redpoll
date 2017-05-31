@@ -2,7 +2,7 @@ module RedpollCommon
   extend ActiveSupport::Concern
   included do 
     rescue_from ActiveRecord::RecordNotFound do |exception|
-      render nothing: true, status: 404
+      render_404 status: 404
     end
   end
   def current_user

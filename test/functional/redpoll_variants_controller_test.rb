@@ -21,6 +21,12 @@ class RedpollVariantsControllerTest < ActionController::TestCase
     assert_response :redirect
     delete :destroy, id: variant
     assert_response :redirect
+    get :cascade_delete, id: variant
+    assert_response :redirect
+    delete :cascade_delete, id: variant
+    assert_response :redirect
+    get :cascade_delete_confirm, id: variant
+    assert_response :redirect
   end
   def test_index
     set_redpoll_group(true)
@@ -44,6 +50,16 @@ class RedpollVariantsControllerTest < ActionController::TestCase
     get :edit, id: variant
     assert_response :success
     get :edit, id: 12345 
+    assert_response :missing
+  end
+  def test_cascade_delete_confirm
+    set_redpoll_group(true)
+    variant = RedpollVariant.find(1)
+    get :cascade_delete_confirm, id: variant
+    assert_response :success
+    get :cascade_delete_confirm, id: 12345 
+    assert_response :missing
+    get :cascade_delete, id: 12345 
     assert_response :missing
   end
 
