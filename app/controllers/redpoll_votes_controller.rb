@@ -1,6 +1,11 @@
 class RedpollVotesController < ApplicationController
   unloadable
-  include RedpollCommon
+  def current_user
+    User.current
+  end
+  def redpoll_group?
+    current_user.groups.named(Setting.plugin_redpoll['redpoll_group']) != []
+  end
   before_action :check_vote_status
   before_filter :deny_access, :unless => :redpoll_group?, only: [:adminresult]
   layout :compute_layout
@@ -65,8 +70,16 @@ class RedpollVotesController < ApplicationController
     @can_vote
   end
   def check_vote_status
-    @redpoll_poll = RedpollPoll.find(redpoll_poll_params)
-    @can_vote = RedpollVote.can_vote?(@redpoll_poll, current_user.id)
-    @can_revote = @redpoll_poll.active
+    begin
+      @redpoll_poll = RedpollPoll.find(redpoll_poll_params)
+      @can_vote = RedpollVote.can_vote?(@redpoll_poll, current_user.id)
+      @can_revote = @redpoll_poll.active
+    rescue
+      if action_name == "adminresult"
+        render_404 status: 404
+      else
+        render :poll_not_found, status: 404
+      end
+    end 
   end
 end

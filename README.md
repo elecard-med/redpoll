@@ -31,8 +31,8 @@ Copy the code like *{{redpoll(70%, 300px, 1)}}* and paste to the wiki page
 ## Settings:
 Administration->Plugins->Redpoll plugin Configure
 If you want, you can determine the name of the band Redpoll group (default redpoll)
-and the output format of the voting user
-User output format
+and the output format of the voting user. To restrict user fields from output patch
+self.format_user(user) function in app/helpers/redpoll_votes_helper.rb
 
 ## Uninstalling a plugin:
   1. bundle exec rake redmine:plugins:migrate NAME=plugin_name VERSION=0 RAILS_ENV=production

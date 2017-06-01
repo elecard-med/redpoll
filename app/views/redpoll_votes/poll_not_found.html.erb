@@ -1,0 +1,28 @@
+<style>
+body {
+  font-family: Verdana, sans-serif;
+  font-size: 12px;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  min-width: 900px;
+}
+#errorExplanation {
+  background: url(../images/exclamation.png) 8px 50% no-repeat;
+  background-color: #ffe3e3;
+  border-color: #d88;
+  color: #880000;
+}
+#errorExplanation, div.flash, .nodata, .warning, .conflict {
+  padding: 6px 4px 6px 30px;
+  margin-bottom: 12px;
+  font-size: 1.1em;
+  border: 1px solid;
+  border-radius: 3px;
+}
+</style>
+<div style="margin:20px;">
+<h2>404</h2>
+<p id="errorExplanation"><%= t('poll_not_found') %></p>
+</div>
+

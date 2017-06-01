@@ -46,7 +46,10 @@ module RedpollVotesHelper
       summary.values.each do |variant|
         adjustment += variant[:percentage]
       end
-      summary[summary.keys.last][:percentage] += (100.0 - adjustment)
+      adjustment = 100.00 - adjustment
+      if !summary.empty?
+        summary[summary.keys.last][:percentage] = (summary[summary.keys.last][:percentage] + adjustment).round(2)  
+      end 
     end
     data
   end
