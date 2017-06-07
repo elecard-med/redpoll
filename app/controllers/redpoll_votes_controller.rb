@@ -26,8 +26,7 @@ class RedpollVotesController < ApplicationController
       if RedpollVote.valid_vote_params?(@redpoll_poll, vote_params)
         RedpollVote.mass_create(@redpoll_poll.id, 
                                 current_user.id,
-                                vote_params, 
-                                cookies[:_redmine_session])
+                                vote_params)
         respond_to do |format|
           format.html { redirect_to redpoll_votes_path(@redpoll_poll)}
         end

@@ -1,15 +1,13 @@
 class RedpollVote < ActiveRecord::Base
   unloadable
   attr_accessible :user
-  attr_accessible :cookie
   belongs_to :user
   belongs_to :redpoll_variant
 
-  def self.mass_create(poll_id, user_id, vote_params, redmine_session_cookie)
+  def self.mass_create(poll_id, user_id, vote_params)
     clear_poll_votes(poll_id, user_id)
     vote_params[:poll_result].values.each do |variant_id|
       RedpollVote.create({
-        cookie: redmine_session_cookie, 
         user_id:  user_id,
         redpoll_variant_id: variant_id
       }, without_protection: true)

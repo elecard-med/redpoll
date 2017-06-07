@@ -13,12 +13,12 @@
 <%= form_for @redpoll_poll do |f| %>
  <div>
     <div><%= f.label :title %></div>
-    <div><%= f.text_field :title, :maxlength => "64" %></div>
+    <div><%= f.text_field :title, :maxlength => "255" %></div>
 </div>
 <br>
 <div>
   <div><%= f.label :description %></div>
-  <div><%= f.text_field :description, :maxlength => "64" %></div>
+  <div><%= f.text_field :description, :maxlength => "255" %></div>
 </div>
 <br>
  <div>

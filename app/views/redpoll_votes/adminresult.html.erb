@@ -18,7 +18,7 @@
             <% question.redpoll_variants.each do |variant| %>
               <% res_variant = res_questions[question.id] %>
               <% res_vs = res_variant[:variants_summary] %>
-              <div> <%=variant.val %> - <%=t('votes_number')%> <%=res_vs[variant.id][:counter] %> (<%=res_vs[variant.id][:percentage].round(2) %>)% </div>
+              <div> <%=variant.val %> - <%=t('votes_number')%> <%=res_vs[variant.id][:counter] %> (<%=res_vs[variant.id][:percentage] %>)% </div>
               <div style="height:7px; padding:1px; border:1px solid #cccccc;"> 
                 <div style="width: <%=res_vs[variant.id][:percentage] %>%; height:7px;background:#007700;"> 
                 </div>    

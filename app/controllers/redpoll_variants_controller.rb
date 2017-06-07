@@ -71,10 +71,11 @@ class RedpollVariantsController < ApplicationController
         format.json { render :show, status: :created, location: entity }
       else
         @redpoll_variant = entity
+        redpoll_question = @redpoll_variant.redpoll_question
         add_breadcrumb t('polls'), redpoll_polls_path
-        add_breadcrumb @redpoll_question.redpoll_poll.title, edit_redpoll_poll_path(@redpoll_question.redpoll_poll) 
-        add_breadcrumb t('questions'), redpoll_questions_path(@redpoll_question.redpoll_poll)
-        add_breadcrumb @redpoll_question.val, edit_redpoll_question_path(@redpoll_question) 
+        add_breadcrumb redpoll_question.redpoll_poll.title, edit_redpoll_poll_path(redpoll_question.redpoll_poll) 
+        add_breadcrumb t('questions'), redpoll_questions_path(redpoll_question.redpoll_poll)
+        add_breadcrumb redpoll_question.val, edit_redpoll_question_path(redpoll_question) 
         add_breadcrumb t('create_redpoll_variant'), new_redpoll_variant_path
         format.html { render :new }
         format.json { render json: entity.errors, status: :unprocessable_entity }
@@ -89,10 +90,11 @@ class RedpollVariantsController < ApplicationController
         format.json { render :show, status: :ok, location: entity }
       else
         @redpoll_variant = entity
+        redpoll_question = @redpoll_variant.redpoll_question
         add_breadcrumb t('polls'), redpoll_polls_path
-        add_breadcrumb @redpoll_question.redpoll_poll.title, edit_redpoll_poll_path(@redpoll_question.redpoll_poll) 
-        add_breadcrumb t('questions'), redpoll_questions_path(@redpoll_question.redpoll_poll)
-        add_breadcrumb @redpoll_question.val, edit_redpoll_question_path(@redpoll_question) 
+        add_breadcrumb redpoll_question.redpoll_poll.title, edit_redpoll_poll_path(redpoll_question.redpoll_poll) 
+        add_breadcrumb t('questions'), redpoll_questions_path(redpoll_question.redpoll_poll)
+        add_breadcrumb redpoll_question.val, edit_redpoll_question_path(redpoll_question) 
         add_breadcrumb t('edit_redpoll_variant'), edit_redpoll_variant_path
         format.html { render :edit}
         format.json { render json: entity.errors, status: :unprocessable_entity }
