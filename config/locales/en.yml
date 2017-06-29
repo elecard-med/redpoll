@@ -8,6 +8,7 @@ en:
    edit_redpoll_poll: "Edit poll"
    create_redpoll_question: "Create question"
    edit_redpoll_question: "Edit question"
+   create_redpoll_variant: "Create variant"
    edit_redpoll_variant: "Edit variant"
    success_create: "The record is successfully created"
    success_update: "The record is successfully updated"
