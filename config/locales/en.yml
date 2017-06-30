@@ -49,5 +49,6 @@ en:
          create: "Create poll"
        redpoll_question:
          create: "Create question"
+	 update: "Update question"
        redpoll_variant:
          create: "Create variant"
