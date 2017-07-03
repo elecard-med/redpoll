@@ -53,3 +53,4 @@ en:
 	 update: "Update question"
        redpoll_variant:
          create: "Create variant"
+	 update: "Update variant"
