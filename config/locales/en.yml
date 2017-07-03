@@ -47,6 +47,7 @@ en:
      submit:
        redpoll_poll:
          create: "Create poll"
+	 update: "Update poll"
        redpoll_question:
          create: "Create question"
 	 update: "Update question"
