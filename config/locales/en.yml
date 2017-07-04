@@ -47,10 +47,10 @@ en:
      submit:
        redpoll_poll:
          create: "Create poll"
-	 update: "Update poll"
+         update: "Update poll"
        redpoll_question:
          create: "Create question"
-	 update: "Update question"
+         update: "Update question"
        redpoll_variant:
          create: "Create variant"
-	 update: "Update variant"
+         update: "Update variant"
