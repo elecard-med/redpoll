@@ -27,7 +27,7 @@ zh:
    success_delete: "记录已删除！"
    fail_delete: "记录无法删除！"
    vote_error_msg: "您必须回答全部的问卷问题。"
-   entry_point_address: "Poll entry point"
+   entry_point_address: "调查问卷入口地址"
    redpoll_group: "调查问卷组"
    redpoll_poll_list: "调查问卷列表"
    redpoll_question_list: "问题列表"
